@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 from pathlib import Path
 
+import psycopg2
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -79,12 +81,15 @@ DATABASES = {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
         # 'ENGINE': 'django.db.backends.psycopg2',
-        # 'NAME': 'testdb',
-        # 'HOST': 'localhost',
-        # 'PORT': '5432',
+        # 'NAME': 'catalog',
+        # # 'HOST': 'localhost',
+        # # 'PORT': '5432',
         # 'USER': 'postgres',
-        # 'PASSWORD': 'password'
+        # 'PASSWORD': '',
     }
+# 'OPTIONS': {
+#         'isolation_level': psycopg2.extensions.ISOLATION_LEVEL_SERIALIZABLE,
+#     },
 }
 
 
@@ -122,7 +127,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 STATIC_FILES_DIRS = (
     BASE_DIR/'static',
 )
