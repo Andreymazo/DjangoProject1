@@ -11,5 +11,5 @@ urlpatterns = [
     # path('', hello, name='home'),#WRONG
     path('contacts/', contacts, name='contacts'),
     path('', products, name='home'),
-] +static(settings.MEDIA_URL, document_root= settings.MEDIA_ROOT)
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 # in template <img ... src="{{key.image.url}}" ... >

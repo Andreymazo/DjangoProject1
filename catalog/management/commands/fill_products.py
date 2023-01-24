@@ -9,9 +9,13 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
 
         jj = [
-            {"preview": "static/css/bootstrap.min.css", "product_name": "krab", "category": "moreplavaushie",
+            {"preview": "media/th.jpeg", "product_name": "lobster", "category": "moreplavaushie",
              "price_per_unit": "5.5"},
-            {"preview": "static/css/bootstrap-reboot.min.css", "product_name": "luk", "category": "trava",
+            {"preview": "media/apelsin8.jpg", "product_name": "lemon", "category": "fruct",
+             "price_per_unit": "4.5"},
+            {"preview": "media/th (1).jpeg", "product_name": "onion", "category": "ovosh",
+             "price_per_unit": "4.5"},
+            {"preview": "media/crab (2).jpeg", "product_name": "crab", "category": "moreplavaushie",
              "price_per_unit": "4.5"},
         ]
         # products_list = []

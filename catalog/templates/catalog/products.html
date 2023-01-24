@@ -23,6 +23,15 @@
           {% endfor %}
           </tbody>
         </table>
+<!--https://pickimage.ru/wp-content/uploads/images/detskie/orange/apelsin8.jpg-->
+<div class="card" style="width: 18rem;">
+  <img src="media/grocery_delivery.avif" width="10" height="200" class="card-img-top" alt="Lemon">
+  <div class="card-body">
+    <p class="card-text">Gentle groceries from friendly people, hm... friendly groceries from gentle people</p>
+  </div>
+</div>
+
+    {% load filter_catalog %}
 
 <h1>Products</h1>
           <table class="table table-dark table-striped">
@@ -41,7 +50,18 @@
                 <tr>
                     <td>{{object.id}}</td>
                     <td>{{object.product_name}}</td>
-                    <td>{{object.preview}}</td>
+<!--crab 2 = https://cdn.elebase.io/5d486d2e-87b2-401e-a93d-d0502e0d1a87/3869e9d5-c0a8-4250-8582-1dfa99af1e89-bah554d1fec2df8f02b0.jpg?w=680&h=382&fit=crop&rot=auto&dpr=2&q=75-->
+<!--onion = https://www.nicepng.com/png/detail/774-7744337_red-onion-fresh-onion.png-->
+<!--                    lobster2 = https://outerbanksthisweek.com/sites/default/files/business/6348/food-items/image-7-jimmys.jpg-->
+<!--                    lemon = https://i.pinimg.com/originals/f0/d8/a7/f0d8a7aedec7b6634da14684eb529518.jpg-->
+                    <td>
+
+                      <img src="{{object.preview}}"  height="100 >
+                        img src="{{ img.image.url }}"
+
+                    </td>
+
+
                     <td>{{object.category}}</td>
                     <td>{{object.price_per_unit}}</td>
 
