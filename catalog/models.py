@@ -24,16 +24,16 @@ class Product(models.Model):
     product_name = models.CharField(max_length=250, verbose_name='Naimenovanie Producta')
     product_description = models.CharField(max_length=250, verbose_name="Product description")
     preview = models.ImageField(upload_to='products/', **NULLABLE)#Chto pokazhet ne znau, ##height_field=None, width_field=None, max_length=100
-    category = models.ForeignKey(Category, on_delete=models.PROTECT)##Hochu zapretit udalyat category.category poka est products.categry
+    category = models.CharField(max_length=250, verbose_name="Category description")##Hochu zapretit udalyat category.category poka est products.categry
     price_per_unit = models.DecimalField(max_digits=6, decimal_places=2)
     date_of_creation = models.DateField(auto_now_add=True)
     date_last_change = models.DateField(auto_now=True)
 
 
     def __str__(self):
-        return  f"""{self.id} {self.product_name} {self.category} {self.price_per_unit} """
+        return  f"""{self.product_name}{self.preview}  {self.category} {self.price_per_unit}  """#{self.id}
     from django.db import models
-
+##{self.product_description} {self.date_of_creation}{self.date_last_change}
     # class Category(models.Model):
     #     name = models.CharField(max_length=200, db_index=True)
     #     slug = models.SlugField(max_length=200, db_index=True, unique=True)

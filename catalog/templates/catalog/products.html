@@ -1,44 +1,54 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-<p>
-        <input name="category" placeholder="введи category producta" />
-    </p>
-    <p>
-        <input name="category_description" placeholder="введи opisanie categoryy producta" />
-    </p>
-    <p>
-        <input name="category" placeholder="введи naimenovanie producta" />
-    </p>
-    <p>
-        <input name="category_description" placeholder="введи opisanie producta" />
-    </p>
-    <p>
-        <input name="product_name" placeholder="введи avatarku po zhelaniu" />
-    </p>
-    <p>
-        <input name="product_description" placeholder="введи category producta" /><br>
-    </p>
+    {% extends 'catalog/base.html' %}
+    {% block content %}
+<h1>Category</h1>
+          <table class="table table-dark table-striped">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Category</th>
+              <th scope="col">Category Description</th>
 
-    <p>
-        <input name="preview"  placeholder="введи price unit " /><br>
-    </p>
-    <p>
-        <input name="product_name" placeholder="введи datu sozdaniya " />
-    </p>
-    <p>
-        <input name="product_description" placeholder="введи date posledn izmeneniya " /><br>
-    </p>
-<!--    <p>-->
-<!--        <textarea name="message" placeholder="что хотел?"></textarea>-->
-<!--    </p>-->
-<!--    <p>-->
-<!--        <input type="submit" value="vvod">-->
+            </tr>
+          </thead>
+          <tbody>
+           {% for object in object_list %}
+                {% if object.category != "nasekomie" %}
+                <tr>
+                    <td>{{object.id}}</td>
+                    <td>{{object.category}}</td>
+                    <td>{{object.category_description}}</td>
 
-<!--    </p>-->
-</body>
-</html>
+                </tr>
+                {% endif %}
+          {% endfor %}
+          </tbody>
+        </table>
+
+<h1>Products</h1>
+          <table class="table table-dark table-striped">
+          <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Product Name</th>
+                <th scope="col">Preview</th>
+                <th scope="col">Product Category</th>
+                <th scope="col">Price of Unit</th>
+            </tr>
+          </thead>
+          <tbody>
+           {% for object in object_list %}
+
+                <tr>
+                    <td>{{object.id}}</td>
+                    <td>{{object.product_name}}</td>
+                    <td>{{object.preview}}</td>
+                    <td>{{object.category}}</td>
+                    <td>{{object.price_per_unit}}</td>
+
+                </tr>
+
+          {% endfor %}
+          </tbody>
+        </table>
+
+    {% endblock %}
