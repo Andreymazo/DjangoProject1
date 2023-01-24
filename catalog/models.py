@@ -23,7 +23,7 @@ class Product(models.Model):
     # created_at = models.CharField(max_length=250, verbose_name='Что-то, что мы щас удалим миграцией')
     product_name = models.CharField(max_length=250, verbose_name='Naimenovanie Producta')
     product_description = models.CharField(max_length=250, verbose_name="Product description")
-    preview = models.ImageField(upload_to='products/', **NULLABLE)#Chto pokazhet ne znau, ##height_field=None, width_field=None, max_length=100
+    preview = models.ImageField(upload_to='media/', **NULLABLE)#Chto pokazhet ne znau, ##height_field=None, width_field=None, max_length=100
     category = models.CharField(max_length=250, verbose_name="Category description")##Hochu zapretit udalyat category.category poka est products.categry
     price_per_unit = models.DecimalField(max_digits=6, decimal_places=2)
     date_of_creation = models.DateField(auto_now_add=True)
