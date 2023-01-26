@@ -7,26 +7,26 @@
         <table class="table table-dark table-striped">
             <thead>
                 <tr>
-                     <th scope="col">Your choice</th>
+                     <th scope="col">Status</th>
                   <th scope="col"> Title of Products</th>
                   <th scope="col">Products Description</th>
-                    <th scope="col">Products Description</th>
+
                 </tr>
             </thead>
             <tbody>
 
             {% for object in object_list %}
+
                 <tr>
                     <td>
                         <a class="btn.btn-default" href="{% url 'catalog:update' object.pk %}" >Update</a>
                         <a class="btn.btn-default" href="{% url 'catalog:delete' object.pk %}" >Delete</a>
-                        <a class="btn.btn-default" href="{% url 'catalog:detail' object.pk %}" >Detail</a>
-
                     </td>
+
                     <td>{{object.title}}</td>
                     <td>{{object.content}}</td>
+                    <td>{{object.image}}</td>
                     <td>{{object.status}}</td>
-                    <td>{{object.image}</td>
                 </tr>
 
             {% endfor %}
@@ -34,8 +34,6 @@
 
           </tbody>
         </table>
-
-
 
 {% endblock %}
 

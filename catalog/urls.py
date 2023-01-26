@@ -3,7 +3,7 @@ from django.conf.urls.static import static
 from catalog.apps import CatalogConfig
 from config import settings
 from catalog.views import products, contact_us, RecordListView, RecordCreateView, \
-    RecordUpdateView, RecordDeleteView  # , RecordCreateView, crab1,
+    RecordUpdateView, RecordDeleteView, RecordDetailView  # , RecordCreateView, crab1,
 
 #, contacts, hello,
 app_name = CatalogConfig.name
@@ -18,5 +18,8 @@ urlpatterns = [
     path('Rec_list/', RecordListView.as_view(), name='Rec_list'),
     path('create/', RecordCreateView.as_view(), name='create'),
     path('update/<int:pk>/', RecordUpdateView.as_view(), name='update'),
-    path('delete/<int:pk>/', RecordDeleteView.as_view(), name='delete')] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    path('delete/<int:pk>/', RecordDeleteView.as_view(), name='delete'),
+    path('detail/<int:pk>/', RecordDetailView.as_view(), name='detail')
+              ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
 # in template <img ... src="{{key.image.url}}" ... >

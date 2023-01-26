@@ -34,19 +34,26 @@ class Product(models.Model):
         return  f"""{self.product_name}{self.preview}  {self.product_description} {self.price_per_unit}  """#{self.id}
 
 class Record(models.Model):
+    STATUS_ACTIV = True
+    STATUS_INACTIV = False
+    STATUSES = (
+        (STATUS_ACTIV, True),
+        (STATUS_INACTIV, False)
+    )
+
     title = models.CharField(max_length=50, verbose_name="Заголовок")
-    slug = models.SlugField()
+    slug = models.CharField(max_length=50, verbose_name="Slug")
     content = models.TextField(max_length=50, null=False, verbose_name='URL')
     image = models.TextField(verbose_name="Содержимое", **NULLABLE)
     date_of_creation = models.DateTimeField(auto_now_add=True, verbose_name="Дата создания")
-    id_public = models.BooleanField(default=True, verbose_name="Опубликовано")
+    id_public = models.BooleanField(choices=STATUSES, default=STATUS_ACTIV, verbose_name="Опубликовано")
     views_controller = models.IntegerField(default=0, verbose_name="Счетчик просмотров")
 
     class Meta:
         verbose_name="Статья"
         verbose_name_plural = "Статьи"
     def __str__(self):
-        return f'{self.title} {self.content}'
+        return f'{self.title} {self.content} {self.image} {self.status}'
 
     # def get_absolut_url(self):
     #     return reverse('catalog: record_detail', kwargs={'slug': self.slug})
