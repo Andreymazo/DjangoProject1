@@ -24,14 +24,39 @@ class Product(models.Model):
     product_name = models.CharField(max_length=250, verbose_name='Naimenovanie Producta')
     product_description = models.CharField(max_length=250, verbose_name="Product description")
     preview = models.ImageField(upload_to='media/', **NULLABLE)#Chto pokazhet ne znau, ##height_field=None, width_field=None, max_length=100
-    category = models.CharField(max_length=250, verbose_name="Category description")##Hochu zapretit udalyat category.category poka est products.categry
+    category = models.ForeignKey(Category, related_name="Category", blank=True, max_length=250, verbose_name="Category description", on_delete=models.CASCADE)##Hochu zapretit udalyat category.category poka est products.categry
     price_per_unit = models.DecimalField(max_digits=6, decimal_places=2)
     date_of_creation = models.DateField(auto_now_add=True)
     date_last_change = models.DateField(auto_now=True)
 
 
     def __str__(self):
-        return  f"""{self.product_name}{self.preview}  {self.category} {self.price_per_unit}  """#{self.id}
+        return  f"""{self.product_name}{self.preview}  {self.product_description} {self.price_per_unit}  """#{self.id}
+
+class Record(models.Model):
+    title = models.CharField(max_length=50, verbose_name="Заголовок")
+    slug = models.SlugField()
+    content = models.TextField(max_length=50, null=False, verbose_name='URL')
+    image = models.TextField(verbose_name="Содержимое", **NULLABLE)
+    date_of_creation = models.DateTimeField(auto_now_add=True, verbose_name="Дата создания")
+    id_public = models.BooleanField(default=True, verbose_name="Опубликовано")
+    views_controller = models.IntegerField(default=0, verbose_name="Счетчик просмотров")
+
+    class Meta:
+        verbose_name="Статья"
+        verbose_name_plural = "Статьи"
+    def __str__(self):
+        return f'{self.title} {self.content}'
+
+    # def get_absolut_url(self):
+    #     return reverse('catalog: record_detail', kwargs={'slug': self.slug})
+    # def save(self, *args, **kwargs):
+    #     if not self.slug:
+    #         # Newly created object, so set slug
+    #         self.slug = slugify(self.title)
+    #     return super().save(*args, **kwargs)
+
+
     from django.db import models
 ##{self.product_description} {self.date_of_creation}{self.date_last_change}
     # class Category(models.Model):

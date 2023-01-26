@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 from pathlib import Path
 
 import psycopg2
+# from django.conf.global_settings import EMAIL_HOST, EMAIL_PORT, EMAIL_HOST_USER
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -82,10 +83,10 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
         # 'ENGINE': 'django.db.backends.psycopg2',
         # 'NAME': 'catalog',
-        # # 'HOST': 'localhost',
-        # # 'PORT': '5432',
+        # 'HOST': 'localhost',
+        # 'PORT': '5432',
         # 'USER': 'postgres',
-        # 'PASSWORD': '',
+        # 'PASSWORD': '12345',
     }
 # 'OPTIONS': {
 #         'isolation_level': psycopg2.extensions.ISOLATION_LEVEL_SERIALIZABLE,
@@ -137,3 +138,10 @@ MEDIA_URL = '/media/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+#
+# EMAIL_HOST = 'smpt.yandex.ru'
+# EMAIL_PORT = 465
+# EMAIL_HOST_USER = 'andreymazo@mail.ru'
+# EMAIL_HOST_PASSWORD = ' ' or None
+# EMAIL_USE_SSL = True
+# EMAIL_BACKEND = ('')

@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
-from catalog.models import Category, Product
+from catalog.models import Category, Product, Record
 
 
 # def hello(request):
@@ -23,14 +23,19 @@ def products(request):
 
     }
     return render(request, 'catalog/products.html', context)
-def contacts(request):
+def contact_us(request):
     if request.method == 'POST':
         # print(request.method)
         print(request.POST.get('name'))
         print(request.POST.get('e-mail'))
         print(request.POST.get('message'))
-    return render(request, 'catalog/contacts.html')
+    return render(request, 'catalog/contact_us.html')
+def crab1(request):
+    context = {
+        'object_list': Record.objects.all()
 
+    }
+    return render(request, 'catalog/crab1.html', context)
 
 # def contacts(request):
-#     return render(request, 'catalog/contacts.html')
+#     return render(request, 'catalog/contact_us.html')

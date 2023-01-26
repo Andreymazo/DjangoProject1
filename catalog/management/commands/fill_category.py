@@ -19,7 +19,7 @@ class Command(BaseCommand):
         ii = [
             {"category": "mebel" , "category_description": "stulya"},
             {"category": "moreplavaushie", "category_description": "ribi"},
-            {"category": "trava ", "category_description": "v ogorode prorastaemaya"}
+            {"category": "trava", "category_description": "v ogorode prorastaemaya"}
         ]
         # category_list = []
         for i in ii:

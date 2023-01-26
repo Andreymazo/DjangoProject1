@@ -15,11 +15,13 @@ f = {
 
 @register.filter
 def mediapath(text):
-    return '/media/' + str(text)
+    print(str(text))
+    return '' + str(text)
 
 @register.simple_tag
 def mediapath(text):
-    return '/media/' + str(text)
+    print(str(text))
+    return '' + str(text)
 
 # def zamena_path(path):#path1 -j: path2 - preview
 #     for i,j in f.items():
