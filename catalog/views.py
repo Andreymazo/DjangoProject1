@@ -1,5 +1,6 @@
 from django.shortcuts import render
-
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView
+from django.urls import reverse_lazy
 from catalog.models import Category, Product, Record
 
 
@@ -30,12 +31,30 @@ def contact_us(request):
         print(request.POST.get('e-mail'))
         print(request.POST.get('message'))
     return render(request, 'catalog/contact_us.html')
-def crab1(request):
-    context = {
-        'object_list': Record.objects.all()
-
-    }
-    return render(request, 'catalog/crab1.html', context)
-
+# def crab1(request):
+#     context = {
+#         'object_list': Record.objects.all()
+#
+#     }
+#     return render(request, 'catalog/crab1.html', context)
 # def contacts(request):
 #     return render(request, 'catalog/contact_us.html')
+
+class RecordListView(ListView):
+    model = Record
+class RecordCreateView(CreateView):
+    # Sozdaem zapis
+    model = Record
+    # fields = '__all__'
+    fields = ('slug', 'content')
+    success_url = reverse_lazy('catalog:Rec_list')
+
+class RecordUpdateView(UpdateView):
+        # Sozdaem zapis
+    model = Record
+        # fields = '__all__'
+    fields = ('slug', 'content')
+    success_url = reverse_lazy('catalog:Rec_list')
+class RecordDeleteView(DeleteView):
+    model = Record
+    success_url = reverse_lazy('catalog:Rec_list')

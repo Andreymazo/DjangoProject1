@@ -1,0 +1,21 @@
+{%extends 'catalog/base.html'%}
+  {% block content %}
+    <div class="row">
+      <div class="col-4">
+        <div class="card">
+          <div class="card-body">
+            <form method="post">
+              {% csrf_token %}
+              {{form.as_p}}
+
+
+            <span class="input-group-text" id="inputGroup-sizing-lg">Send</span>
+<!--                <a class=" " href=" {url Rec_list" </a>-->
+                <button class="btn btn-outline-secondary" type="submit" id="input-group-text">Button</button>
+            <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+
+            </form>
+        </div>
+      </div>
+    </div>
+      {% endblock %}
