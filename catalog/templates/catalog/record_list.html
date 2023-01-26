@@ -18,8 +18,8 @@
             {% for object in object_list %}
                 <tr>
                     <td>
-                        <a class="btn btn-info" href="{% url 'catalog:update' object.pk %}" >Update</a>
-                        <a class="btn btn-danger" href="{% url 'catalog:delete' object.pk %}" >Delete</a>
+                        <a class="btn.btn-default" href="{% url 'catalog:update' object.pk %}" >Update</a>
+                        <a class="btn.btn-default" href="{% url 'catalog:delete' object.pk %}" >Delete</a>
                     </td>
                     <td>{{object.title}}</td>
                     <td>{{object.content}}</td>
