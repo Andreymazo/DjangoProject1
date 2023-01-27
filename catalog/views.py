@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
 from django.urls import reverse_lazy
 from catalog.models import Category, Product, Record
@@ -24,6 +24,10 @@ def products(request):
 
     }
     return render(request, 'catalog/products.html', context)
+# def vivod_postatusu(request):
+#     context = {'object_list': Record.objects.all()}
+#     return render(request, 'catalog/record_detail.html', context)
+
 def contact_us(request):
     if request.method == 'POST':
         # print(request.method)
@@ -61,3 +65,16 @@ class RecordDeleteView(DeleteView):
 class RecordDetailView(DetailView):
     model = Record
     template_name = 'catalog/record_detail.html'
+
+def vivod_postatusu(request):
+    context = {'object_list': Record.objects.all()}
+    return render(request, 'catalog/record_detail.html', context)
+
+    # def show_record(request, post_id):
+    #     post = get_object_or_404(Record, pk=id)
+    #
+    #     context = {
+    #         'title': post.title
+    #     }
+    #
+    #     return render(request, 'catalog/record_detail.html', context=context)

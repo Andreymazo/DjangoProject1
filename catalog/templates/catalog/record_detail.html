@@ -1,4 +1,4 @@
-{{% extends 'catalog/base.html' %}
+{% extends 'catalog/base.html' %}
     {% block content %}
 <title>Record</title>
 
@@ -7,28 +7,32 @@
         <table class="table table-dark table-striped">
             <thead>
                 <tr>
-                     <th scope="col">Status</th>
+
                   <th scope="col"> Title of Products</th>
                   <th scope="col">Products Description</th>
-
+                    <th scope="col">Products Status</th>
+                    <th scope="col">Products Image </th>
                 </tr>
             </thead>
+
             <tbody>
 
             {% for object in object_list %}
+                {% if object.id_public == True %}
 
-                <tr>
-                    <td>
-                        <a class="btn.btn-default" href="{% url 'catalog:update' object.pk %}" >Update</a>
-                        <a class="btn.btn-default" href="{% url 'catalog:delete' object.pk %}" >Delete</a>
-                    </td>
 
-                    <td>{{object.title}}</td>
-                    <td>{{object.content}}</td>
-                    <td>{{object.image}}</td>
-                    <td>{{object.status}}</td>
-                </tr>
+                    <tr>
+                        <td>
+                            <a class="btn.btn-default" href="{% url 'catalog:update' object.pk %}" >Update</a>
+                            <a class="btn.btn-default" href="{% url 'catalog:delete' object.pk %}" >Delete</a>
+                        </td>
 
+                        <td>{{object.title}}</td>
+                        <td>{{object.content}}</td>
+                        <td>{{object.image}}</td>
+                        <td>{{object.id_public}}</td>
+                    </tr>
+                {% endif %}
             {% endfor %}
 
 

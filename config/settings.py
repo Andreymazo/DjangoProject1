@@ -82,11 +82,11 @@ DATABASES = {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
         # 'ENGINE': 'django.db.backends.psycopg2',
-        # 'NAME': 'catalog',
+        # 'NAME': 'postgres',
         # 'HOST': 'localhost',
         # 'PORT': '5432',
         # 'USER': 'postgres',
-        # 'PASSWORD': '12345',
+        # 'PASSWORD': '123456',
     }
 # 'OPTIONS': {
 #         'isolation_level': psycopg2.extensions.ISOLATION_LEVEL_SERIALIZABLE,

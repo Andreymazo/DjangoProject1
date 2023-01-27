@@ -20,6 +20,6 @@ urlpatterns = [
     path('update/<int:pk>/', RecordUpdateView.as_view(), name='update'),
     path('delete/<int:pk>/', RecordDeleteView.as_view(), name='delete'),
     path('detail/<int:pk>/', RecordDetailView.as_view(), name='detail')
-              ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+              ] #+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 # in template <img ... src="{{key.image.url}}" ... >

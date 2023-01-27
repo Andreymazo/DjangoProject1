@@ -1,4 +1,4 @@
-{{% extends 'catalog/base.html' %}
+{% extends 'catalog/base.html' %}
     {% block content %}
 <title>Record</title>
 
@@ -10,7 +10,8 @@
                      <th scope="col">Your choice</th>
                   <th scope="col"> Title of Products</th>
                   <th scope="col">Products Description</th>
-                    <th scope="col">Products Description</th>
+                    <th scope="col">Products Status</th>
+                    <th scope="col">Products Image </th>
                 </tr>
             </thead>
             <tbody>
@@ -26,7 +27,15 @@
                     <td>{{object.title}}</td>
                     <td>{{object.content}}</td>
                     <td>{{object.status}}</td>
-                    <td>{{object.image}</td>
+                    <td>
+                        <img src="{{object.image.url}}" width="50" height=50  alt=""/>
+                    </td>
+
+            `            img src="img.image.url"
+<!--                        <img src="{ mediapath object.preview}"  height=100 />-->
+<!--&lt;!&ndash;-->
+<!--&lt;!&ndash;                        ->-->
+
                 </tr>
 
             {% endfor %}
@@ -34,7 +43,6 @@
 
           </tbody>
         </table>
-
 
 
 {% endblock %}
