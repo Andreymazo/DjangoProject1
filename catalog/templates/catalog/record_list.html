@@ -26,12 +26,12 @@
                     </td>
                     <td>{{object.title}}</td>
                     <td>{{object.content}}</td>
-                    <td>{{object.status}}</td>
+                    <td>{{object.id_public}}</td>
                     <td>
                         <img src="{{object.image.url}}" width="50" height=50  alt=""/>
                     </td>
 
-            `            img src="img.image.url"
+            `
 <!--                        <img src="{ mediapath object.preview}"  height=100 />-->
 <!--&lt;!&ndash;-->
 <!--&lt;!&ndash;                        ->-->
@@ -44,6 +44,8 @@
           </tbody>
         </table>
 
-
+{% for object in object_lst %}
+   <li><a href="{{ object.get_absolute_url }}"> Link {{ forloop.counter }} </a></li>
+{% endfor %}
 {% endblock %}
 

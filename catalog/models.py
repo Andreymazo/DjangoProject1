@@ -40,10 +40,16 @@ class Record(models.Model):
     slug = models.CharField(max_length=50, verbose_name="Slug")
     content = models.TextField(max_length=50, null=False, verbose_name='URL')
     image = models.ImageField(upload_to="records", **NULLABLE)
+
+    @property
+    def image_url(self):
+        if self.image and hasattr(self.image, 'url'):
+            return self.image.url
+
     date_of_creation = models.DateTimeField(auto_now_add=True, verbose_name="Дата создания")
     id_public = models.BooleanField(default=True, verbose_name="Опубликовано")
     views_controller = models.IntegerField(default=0, verbose_name="Счетчик просмотров")
-
+    # .ImageField(upload_to='users/%Y/%m/%d/', blank=True)
     # class Meta:
     #     verbose_name="Статья"
     #     verbose_name_plural = "Статьи"
