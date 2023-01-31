@@ -10,6 +10,12 @@
           <a class="nav-link active" aria-current="page" href="{% url 'catalog:home' %}">Home</a>
         </li>
         <li class="nav-item">
+          <a class="nav-link" href="{% url 'catalog:Product_list' %}">Product List</a>
+        </li>
+         <li class="nav-item">
+          <a class="nav-link" href="{% url 'catalog:Product_form' %}">Product Form</a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link" href="{% url 'catalog:contacts' %}">Contact us</a>
         </li>
         <li class="nav-item">
@@ -18,6 +24,7 @@
         <li class="nav-item">
           <a class="nav-link" href="{% url 'catalog:create' %}">Records form</a>
         </li>
+
       </ul>
     </div>
   </div>
