@@ -18,7 +18,7 @@
             {% for object in object_list %}
                 <tr>
                     <td>
-                        <a class="btn.btn-default" href="{% url 'catalog:update' object.pk %}" >Update</a>
+                        <a class="btn.btn-default" href="{% url 'catalog:update' object.pk %}" >Add</a>
                         <a class="btn.btn-default" href="{% url 'catalog:delete' object.pk %}" >Delete</a>
                         <a class="btn.btn-default" href="{% url 'catalog:detail' object.pk %}" >Detail</a>
 

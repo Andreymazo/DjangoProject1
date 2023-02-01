@@ -12,15 +12,15 @@
             </tr>
           </thead>
           <tbody>
-           {% for object in object_list %}
-                {% if object.category != "nasekomie" %}
+           {% for Category.object in object_list %}
+<!--                {% if object.category != "nasekomie" %}-->
                 <tr>
                     <td>{{object.id}}</td>
                     <td>{{object.category}}</td>
                     <td>{{object.category_description}}</td>
 
                 </tr>
-                {% endif %}
+<!--                {% endif %}-->
           {% endfor %}
           </tbody>
         </table>

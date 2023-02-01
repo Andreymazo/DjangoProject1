@@ -1,4 +1,7 @@
+from django.core.exceptions import ValidationError
 from django.db import models
+from django.db.models import CASCADE
+from django.http import request
 
 NULLABLE = {'blank': True, 'null': True}
 
@@ -18,27 +21,49 @@ class Category(models.Model):
     category = models.CharField(max_length=250, verbose_name="Category")
     category_description = models.CharField(max_length=250, verbose_name="Category description")
     def __str__(self):
-        return f'{self.category} '
+        return f'{self.category}'
 class Product(models.Model):
+    STATUS_ACTIV = 'active'
+    STATUS_INACTIV = 'inactive'
+    STATUSES = (
+        (STATUS_ACTIV, 'available'),
+        (STATUS_INACTIV, 'not item in list')
+    )
+
     # created_at = models.CharField(max_length=250, verbose_name='Что-то, что мы щас удалим миграцией')
-    product_name = models.CharField(max_length=250, verbose_name='Naimenovanie Producta')
+    t = ['казинo', 'криптовалюта', 'крипта', 'биржа', 'дешево', 'бесплатно', 'обман', 'полиция', 'радар']
+    # def clean(self):
+    #     t = ['казинo', 'криптовалюта', 'крипта', 'биржа', 'дешево', 'бесплатно', 'обман', 'полиция', 'радар']
+    #
+    #     for i in t:
+    #         if self.product_name == i:
+    #             raise ValidationError('Nedopustimie slova')clean
+    product_name = models.CharField(validators=[], max_length=250,  verbose_name='Naimenovanie Producta')
+
     product_description = models.CharField(max_length=250, verbose_name="Product description")
     preview = models.ImageField(upload_to='records', **NULLABLE)
     category = models.ForeignKey(Category, related_name="Category", blank=True, max_length=250, verbose_name="Category description", on_delete=models.CASCADE)##Hochu zapretit udalyat category.category poka est products.categry
     price_per_unit = models.DecimalField(max_digits=6, decimal_places=2)
     date_of_creation = models.DateField(auto_now_add=True)
     date_last_change = models.DateField(auto_now=True)
+    status = models.CharField(choices=STATUSES, default=STATUS_ACTIV, max_length=20)
+
+# def clean():
+#     t = ['казинo', 'криптовалюта', 'крипта', 'биржа', 'дешево', 'бесплатно', 'обман', 'полиция', 'радар']
+#
+#     for i in t:
+#         if Product.product_name == i:
+#             raise ValueError('Nedopustimie slova')
 
 
     def __str__(self):
-        return  f"""{self.product_name}{self.preview}  {self.product_description} {self.price_per_unit}  """#{self.id}
+        return  f"""{self.product_name}{self.preview}  {self.product_description} {self.price_per_unit} {self.status}   """#{self.id}
 
 class Record(models.Model):
 
-
     title = models.CharField(max_length=50, verbose_name="Заголовок")
     slug = models.CharField(max_length=50, verbose_name="Slug")
-    content = models.TextField(max_length=50, null=False, verbose_name='URL')
+    content = models.TextField(max_length=50, null=False, verbose_name='Content')
     image = models.ImageField(upload_to="records", **NULLABLE)
 
     @property
@@ -55,6 +80,20 @@ class Record(models.Model):
     #     verbose_name_plural = "Статьи"
     def __str__(self):
         return f'{self.title} {self.content} {self.image} {self.id_public}'
+class Subject(models.Model):
+    product_name_again = models.ForeignKey(Product, on_delete=CASCADE)
+    product_content = models.CharField(max_length=150)
+    # def clean_product_content(self):
+    #     t = ['казинo', 'криптовалюта', 'крипта', 'биржа', 'дешево', 'бесплатно', 'обман', 'полиция', 'радар']
+    #     if self.request.method == 'POST':
+    #         # form = ProductForm(request.POST, request.FILES)
+    #         for i in t:
+    #             if self.product_content == i:
+    #                 raise ValueError('Nedopustimie slova')
+            # if not form.is_valid():
+            #
+            # else:
+            #     return Product.product_name
 
     # def get_absolut_url(self):
     #     return reverse('catalog: record_detail', kwargs={'slug': self.slug})

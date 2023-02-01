@@ -79,14 +79,14 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-        # 'ENGINE': 'django.db.backends.psycopg2',
-        # 'NAME': 'postgres',
-        # 'HOST': 'localhost',
-        # 'PORT': '5432',
-        # 'USER': 'postgres',
-        # 'PASSWORD': '123456',
+        # 'ENGINE': 'django.db.backends.sqlite3',
+        # 'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'catalog10',
+        'HOST': 'localhost',
+        'PORT': '5432',
+        'USER': 'postgres',
+        'PASSWORD': '123456',
     }
 # 'OPTIONS': {
 #         'isolation_level': psycopg2.extensions.ISOLATION_LEVEL_SERIALIZABLE,
