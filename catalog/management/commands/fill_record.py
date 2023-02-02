@@ -12,11 +12,11 @@ class Command(BaseCommand):
     #Zapolnim textom stranici-productov
         {"title": "crab1",
         "content": "The blue crab is a much-prized type of seafood that provides delicious tender meat that is mildly briny, with a subtle sweet undertone. It makes good eating on its own and also pairs well with a wide range of other flavors. This crab is likely to appeal to most people as it has no offensive or overpowering taste",
-        "image": "records/crab (2).jpeg",
+        "image": "records/crab.jpeg",
         "id_public": True},
         {"title": "onion",
         "content":  "The onion is likely native to southwestern Asia but is now grown throughout the world, chiefly in the temperate zones. Onions are low in nutrients but are valued for their flavour and are used widely in cooking. They add flavour to such dishes as stews, roasts, soups, and salads and are also served as a cooked vegetable",
-        "image": "records/th (1).jpeg",
+        "image": "records/onion.jpeg",
         "id_public": True,
         },
         {"title": "lobster",

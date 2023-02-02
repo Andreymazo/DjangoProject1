@@ -8,6 +8,10 @@ class SubjectForm(forms.ModelForm):
         #t = ['казино', 'криптовалюта', 'крипта', 'биржа', 'дешево', 'бесплатно', 'обман', 'полиция', 'радар']
         model = Subject
         fields = '__all__'#('product_name', 'product_description', 'preview', 'price_per_unit', 'category')
+class ProductForm(forms.ModelForm):
+    class Meta:
+        model = Product
+        fields = '__all__'
 
     # def clean_product_name(self):
     #     t = ['казинo', 'криптовалюта', 'крипта', 'биржа', 'дешево', 'бесплатно', 'обман', 'полиция', 'радар']

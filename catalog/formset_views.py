@@ -17,8 +17,8 @@ class ProductUpdateWithSubject(UpdateView):
     #         for i in t:
     #             if self.product_content == i:
     #                 raise ValueError('Nedopustimie slova')
-    # def get_success_url(self):
-    #     return reverse('catalog:Product_list', args=[self.object.pk])
+    def get_success_url(self):
+        return reverse('catalog:Product_list', args=[self.object.pk])
 
     def get_context_data(self, **kwargs):
         context_data = super().get_context_data(**kwargs)

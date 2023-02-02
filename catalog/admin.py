@@ -15,13 +15,13 @@ from .models import Category, Product, Record
 # @admin.register(Person)
 # class PersonAdmin(admin.ModelAdmin):
 #     search_fields = ("last_name__startswith",)
-
+admin.site.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ['category', 'category_description']
     list_filter = ['category']
 
     # prepopulated_fields = {'slug': ('name',)}
-admin.site.register(Category, CategoryAdmin)
+
 class ProductAdmin(admin.ModelAdmin):
     # '','preview', , 'date_of_creation', 'date_last_change'
     list_display = ['id', 'product_name', 'category', 'price_per_unit']

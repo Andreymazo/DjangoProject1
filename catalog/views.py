@@ -5,7 +5,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
 from django.urls import reverse_lazy, reverse
 
-from catalog.forms import SubjectForm
+from catalog.forms import SubjectForm, ProductForm
 from catalog.models import Category, Product, Record
 
 
@@ -94,7 +94,7 @@ class ProductCreateView(CreateView):
 
 class ProductUpdateView(UpdateView):
     model = Product
-    form_class = SubjectForm
+    form_class = ProductForm
     success_url = reverse_lazy('catalog:Product_list')
     template_name = 'catalog/product_form.html'
 
@@ -113,7 +113,7 @@ class ProductUpdateView(UpdateView):
 
 class ProductDeleteView(DeleteView):
     model = Product
-    # form_class = ProductForm
+    form_class = ProductForm
     success_url = reverse_lazy('catalog:Product_list')
     template_name = 'catalog/product_confirm_delete.html'
 
@@ -156,10 +156,10 @@ class RecordListView(ListView):
 
 
 class RecordCreateView(CreateView):
-    # Sozdaem zapis
+    # Sozdaem zapis "Record form"
     model = Record
-    # fields = '__all__'
-    fields = ('title', 'content', 'id_public')
+    fields = '__all__'
+    # fields = ('title', 'content', 'id_public')
     success_url = reverse_lazy('catalog:Rec_list')
 
 
@@ -178,6 +178,7 @@ class RecordUpdateView(UpdateView):
     # fields = '__all__'
     fields = ('title', 'content', 'image', 'id_public')
     success_url = reverse_lazy('catalog:Rec_list')
+
 
 
 class RecordDeleteView(DeleteView):
