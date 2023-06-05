@@ -1740,7 +1740,7 @@ permission_id</ColNames>
       <Deferrable>1</Deferrable>
       <InitiallyDeferred>1</InitiallyDeferred>
       <RefColNames>id</RefColNames>
-      <RefTableName>catalog_record</RefTableName>
+      <RefTableName>catalog_product</RefTableName>
     </foreign-key>
     <index id="581" parent="491" name="catalog_subject_product_name_id_619b5c69">
       <ColNames>product_name_id</ColNames>

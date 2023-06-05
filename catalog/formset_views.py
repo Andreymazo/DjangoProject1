@@ -29,7 +29,7 @@ class ProductUpdateWithSubject(UpdateView):
     def form_valid(self, form):
         context_data = self.get.context_data()
         formset = context_data['formset']
-        print(self.request.method)
+        print("-----------------------------")
         with transaction.atomic():
             self.object = form.save()
             if formset.is_valid():

@@ -36,7 +36,7 @@ class Product(models.Model):
         (STATUS_ACTIV, 'available'),
         (STATUS_INACTIV, 'no item')
     )
-    product_name = models.CharField(validators=[RegexValidator(regex="казино", code="invalid")], max_length=250, verbose_name='Naimenovanie Producta')
+    product_name = models.CharField(max_length=250, verbose_name='Naimenovanie Producta')#validators=[RegexValidator(regex="казино", code="invalid")]
     product_description = models.CharField(max_length=250, verbose_name="Product description", **NULLABLE)
     preview = models.ImageField(upload_to='records', **NULLABLE)
     category = models.ForeignKey(Category, related_name="Category", blank=True, max_length=100,
@@ -49,9 +49,9 @@ class Product(models.Model):
     def __str__(self):
         return f"""{self.product_name}{self.preview}  {self.product_description} {self.price_per_unit} {self.status}   """  # {self.id}
 
-# class Subject(models.Model):
-#     product_name = models.ForeignKey(Product, on_delete=CASCADE)
-#     product_description = models.CharField(max_length=150)
+class Subject(models.Model):
+    product_name = models.ForeignKey(Product, on_delete=CASCADE)
+    product_description = models.CharField(max_length=150)
 #
 #     def clean(self):
 #
@@ -121,9 +121,9 @@ class Record(models.Model):
     def __str__(self):
         return f'{self.title} {self.content} {self.image} {self.id_public}'
 
-class Subject(models.Model):
-    product_name = models.ForeignKey(Record, on_delete=CASCADE)
-    product_description = models.CharField(max_length=150)
+# class Subject(models.Model):
+#     product_name = models.ForeignKey(Record, on_delete=CASCADE)
+#     product_description = models.CharField(max_length=150)
 
 
     # def save(self, *args, **kwargs):

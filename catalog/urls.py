@@ -18,7 +18,6 @@ urlpatterns = [
     path('products/', ProductListView.as_view(), name='Product_list'),
     path('create_products/<int:pk>/', ProductCreateView.as_view(), name='Product_create'),
     path('create_products/<int:pk>/subjects/', ProductUpdateWithSubject.as_view(), name='update_withsubject'),
-    # path('update_products/<int:pk>/subjects/', ProductUpdateWithSubject.as_view(), name='update_withsubject'),
     path('update_products/<int:pk>/', ProductUpdateView.as_view(), name='Product_form'),
     # path('update_products/<int:pk>/subjects/', ProductUpdateWithSubject.as_view(), name='update_withsubject'),
 # Exception Value: 	'__proxy__' object is not callable
