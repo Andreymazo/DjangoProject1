@@ -5,6 +5,7 @@ from django.db.models import CASCADE, Q
 from django.core.exceptions import ValidationError
 
 from django.db.models import CheckConstraint, Q, F
+from django.utils.safestring import mark_safe
 from django.utils.translation import gettext_lazy as _
 NULLABLE = {'blank': True, 'null': True}
 
@@ -38,7 +39,16 @@ class Product(models.Model):
     )
     product_name = models.CharField(max_length=250, verbose_name='Naimenovanie Producta')#validators=[RegexValidator(regex="казино", code="invalid")]
     product_description = models.CharField(max_length=250, verbose_name="Product description", **NULLABLE)
-    preview = models.ImageField(upload_to='records', **NULLABLE)
+    preview = models.ImageField(upload_to='media', **NULLABLE)
+
+    def image_tag(self):
+        if self.preview:
+            return mark_safe('<img src = "%s" style = "width: 50px; height:40px;" />' % self.preview.url)
+        else:
+            return 'No Image Found'
+
+    image_tag.short_description = 'Image'
+
     category = models.ForeignKey(Category, related_name="Category", blank=True, max_length=100,
                                  verbose_name="Category description",
                                  on_delete=models.CASCADE)

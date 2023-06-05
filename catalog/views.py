@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.core.files.storage import FileSystemStorage
 from django.forms import inlineformset_factory
 from django.http import request
@@ -116,18 +117,21 @@ class ProductUpdateView(UpdateView):
     #             return Product.product_name
 
 
+class ProductDetailView(DetailView):
+    model = Product
+    form_class = ProductForm
+    success_url = reverse_lazy('catalog:Product_list')
+    template_name = 'catalog/Product_detail.html'
+
+
 class ProductDeleteView(DeleteView):
     model = Product
-    # form_class = ProductForm
+    form_class = ProductForm
     success_url = reverse_lazy('catalog:Product_list')
     template_name = 'catalog/product_confirm_delete.html'
 
-
-class ProductDetailView(DetailView):
-    model = Product
-    # form_class = ProductForm
-    success_url = reverse_lazy('catalog:Product_list')
-    template_name = 'catalog/Product_detail.html'
+    def get(self, request, *args, **kwargs):
+        return self.delete(request, *args, **kwargs)
 
 
 def change_status(request, pk):

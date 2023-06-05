@@ -1,5 +1,23 @@
 {% extends 'catalog/base.html' %}
     {% block content %}
+<style>
+    .profile-pic-wrapper {
+  width: 60px;
+  height: 90px;
+  cursor: pointer;
+}
+
+.profile-pic-wrapper img {
+  position: relative;
+  width: 60px;
+}
+
+.profile-pic-wrapper:hover img {
+  position: absolute;
+    height: 800px;
+  width: 1200px;
+}
+</style>
 <title>Product</title>
 
 <h1> Product</h1>
@@ -20,7 +38,10 @@
 
                     <td>  {{object.product_name}}</td>
                     <td>
-                        <img src="{{object.preview.url}}"  width="50" height=50  alt=""/>
+
+                     <div class = "profile-pic-wrapper">
+                            <img src="{{object.preview.url}}"  alt="" class="rounded-circle" data-bs-target="#exampleModal", height="50"/>
+                     </div>
                     </td>
                     <td>{{object.product_description}}</td>
                     <td>{{object.category}}</td>

@@ -23,9 +23,9 @@ urlpatterns = [
 # Exception Value: 	'__proxy__' object is not callable
 # Exception Location: 	/home/andrey_mazo/.local/lib/python3.10/site-packages/django/views/generic/edit.py, line 39, in get_form
 # Raised during: 	catalog.formset_views.ProductUpdateWithSubject
-
-    path('delete_products/<int:pk>/', ProductDeleteView.as_view(), name='Product_delete'),
     path('detail_products/<int:pk>/', ProductDetailView.as_view(), name='Product_detail'),
+    path('delete_products/<int:pk>/', ProductDeleteView.as_view(), name='Product_delete'),
+
 
 
     # path('update_products/<int:pk>/', ProductUpdateView.as_view(), name='Product_form'),

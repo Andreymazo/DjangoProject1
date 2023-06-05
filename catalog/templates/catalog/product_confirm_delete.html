@@ -4,14 +4,21 @@
     <div class="col-4">
         <div class="card">
             <div class="card-body">
-                <form method="post">
+                <form method="post" >
                     {% csrf_token %}
 <!--                    {{form.as_p}}-->
 
-
-                     <a class="btn btn-outline-secondary" href="{% url 'catalog:Product_list' %}" type="submit" > Udalit </a>
+<p class="form-buttons">
+			<input type="submit" class="btn btn-primary" value="Delete">
+			<a href="{% url 'catalog:Product_list'%}" class="btn btn-outline">Cancel</a>
+		</p>
+                     <a class="btn btn-outline-secondary" href="{% url 'catalog:Product_delete' product.id %}" type="submit" data-dismiss="modal" > Udalit </a>
                     <a class="btn btn-outline-secondary" href="{% url 'catalog:Product_list' %}">Peredumal</a>
-
+                <form method="POST" action="{% url 'catalog:Product_delete' object.id %}">
+                                {% csrf_token %}
+                <button class="btn btn-outline-warning ml-2" type="submit">Update</button>
+                                <button type="button" class="btn btn-outline-danger" href="{% url 'catalog:Product_delete' object.id %}" data-dismiss="modal">Delete</button>
+                            </form>
 
 
 
